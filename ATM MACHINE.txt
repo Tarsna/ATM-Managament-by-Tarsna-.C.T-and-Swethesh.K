@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+unsigned long amount=1000, deposit, withdraw;
+int choice, pin, k;
+long Account_number;
+char transaction ='y';
+int main()
+{
+    printf("WELCOME TO ATM MACHINE\n");
+    printf("DEAR USER,\n");
+    printf("1. Account number\n");
+    printf("2. ATM card\n");
+    printf("   * * *\n");
+    printf("Enter your choice: ");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+        
+        case 1:
+        while (Account_number != 110032547945)
+        {
+            
+            printf("ENTER YOUR ACCOUNT NUMBER: ");
+            scanf("%ld",&Account_number);
+            if(Account_number != 110032547945){
+            printf("PLEASE ENTER THE CORRECT ACCOUNT NUMBER \n");}
+        }
+        if( Account_number == 110032547945)
+        {
+            
+            printf("\nWelcome to ATM Service\n");
+            printf("1. Check Balance\n");
+            printf("2. Deposit Cash\n");
+            printf("Enter your choice: ");
+	    	scanf("%d", &choice);
+		    switch (choice)
+		    {
+		    case 1:
+		        printf("\n YOUR BALANCE IN Rs : %lu \n THANK YOU", amount);
+		    	break;
+		  	case 2:
+		    	printf("\n ENTER THE AMOUNT TO DEPOSIT ");
+
+			    scanf("%lu", &deposit);
+			    printf("YOU HAVE DEPOSITED RS %lu INTO YOUR ACCOUNT\n",deposit);
+
+                        amount = amount + deposit;
+
+			    printf("YOUR BALANCE IS %lu\nTHANK YOU\n\n\n", amount);
+		     	break;
+		    default:
+			    printf("\n INVALID CHOICE");
+			    break;
+		    }
+		    return 0;
+        }
+        case 2:
+	    while(pin != 1520)
+	    {
+		    printf("ENTER YOUR SECRET PIN NUMBER:");
+		    scanf("%d", &pin);
+	     	if (pin != 1520)
+	    	printf("PLEASE ENTER VALID PASSWORD\n");
+	    }
+	    while (pin == 1520)
+	    {
+		    printf("Welcome to ATM Service\n");
+	    	printf("1. Check Balance\n");
+	    	printf("2. Withdraw Cash\n");
+	    	printf("3. Deposit Cash\n");
+	    	printf("4. Quit\n");
+	      	printf("* * *\n\n");
+	     	printf("Enter your choice: ");
+	    	scanf("%d", &choice);
+	     	switch (choice)
+		{
+		    case 1:
+			printf("\n YOUR BALANCE IN Rs : %lu \n THANK YOU/n", amount);
+			break;
+     		case 2:
+			printf("\n ENTER THE AMOUNT TO WITHDRAW: ");
+			scanf("%lu", &withdraw);
+			if (withdraw % 100 != 0)
+			{
+				printf("\n PLEASE ENTER THE AMOUNT IN MULTIPLES OF 100");
+			}
+			else if (withdraw >(amount - 500))
+			{
+
+				printf("\n INSUFFICENT BALANCE \nRs 500 IS THE REQUIRED MINIMUM BALANCE\n");
+			}
+			else
+			{
+				amount = amount - withdraw;
+				printf("\n\n PLEASE COLLECT YOUR CASH");
+				printf("\nYOUR CURRENT BALANCE IS %lu\nTHANK YOU\n", amount);
+			}
+			break;
+		    case 3:
+			printf("\n ENTER THE AMOUNT TO DEPOSIT ");
+			scanf("%lu", &deposit);
+			printf("YOU HAVE DEPOSITED RS %lu INTO YOUR ACCOUNT\n",deposit);
+                        amount = amount + deposit;
+			printf("YOUR BALANCE IS %lu\nTHANK YOU\n", amount);
+			break;
+		    case 4:
+			printf("\n THANK YOU FOR USING ATM\n");
+			return 0;
+			break;
+		    default:
+			printf("\n INVALID CHOICE\n");
+			return 0;
+		} 
+    } 
+		fflush(stdin);
+		scanf("%c", &transaction);
+		if (transaction == 'n'|| transaction == 'N')
+                    k = 1;
+	} while (!k);
+	printf("\n\n THANKS FOR USING OUT ATM SERVICE");
+}
